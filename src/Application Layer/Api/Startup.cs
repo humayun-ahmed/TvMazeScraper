@@ -1,6 +1,7 @@
 // Copyright 2021, Rtl.
 
 using System;
+using System.IO;
 using System.Net.Http;
 using Infrastructure.Repository;
 using Infrastructure.Repository.Contracts;
@@ -29,14 +30,19 @@ namespace Rtl.TvMaze.Api
 {
     public class Startup
     {
-        public Startup(IWebHostEnvironment env)
+        public Startup()
+        {
+            Configuration = GetConfiguration();
+        }
+
+        public static IConfiguration GetConfiguration()
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile($"appsettings{(env.IsDevelopment() ? ".Development" : string.Empty)}.json", false, true)
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? ".Development"}.json", optional: true)
                 .AddEnvironmentVariables();
-
-            Configuration = builder.Build();
+            return builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -107,7 +113,6 @@ namespace Rtl.TvMaze.Api
             #region Settings
             services.AddSingleton(Configuration.BindSettings<PaginationSettings>(nameof(PaginationSettings)));
             services.AddSingleton(Configuration.BindSettings<ScraperSettings>(nameof(ScraperSettings)));
-            services.AddSingleton(Configuration.BindSettings<RateLimitSettings>(nameof(RateLimitSettings)));
             services.AddSingleton(Configuration.BindSettings<SchedulerSettings>(nameof(SchedulerSettings)));
             #endregion
 

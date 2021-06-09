@@ -14,11 +14,7 @@ namespace Rtl.TvMaze.Api
 {
     public class Program
     {
-        public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddEnvironmentVariables()
-            .Build();
+        public static IConfiguration Configuration { get; } = Startup.GetConfiguration();
 
 
         /// <summary>
