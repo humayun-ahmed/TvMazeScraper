@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Infrastructure.Validator.Contract</AssemblyName>
+    <RootNamespace>Infrastructure.Validator.Contract</RootNamespace>
+    <Company>SELISE</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    
+  </ItemGroup>
+</Project>

@@ -6,6 +6,7 @@ using System.Net.Http;
 using Infrastructure.Repository;
 using Infrastructure.Repository.Contracts;
 using Infrastructure.Scheduler;
+using Infrastructure.Validator.Contract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Polly;
 using Rtl.TvMaze.Api.CustomMiddleware;
+using Rtl.TvMaze.Api.Dto;
 using Rtl.TvMaze.Api.HealthCheck;
 using Rtl.TvMaze.Api.Logging;
 using Rtl.TvMaze.Api.Options;
@@ -24,6 +26,7 @@ using Rtl.TvMaze.Scraper.Service;
 using Rtl.TvMaze.Scraper.Service.Contracts;
 using Rtl.TvMaze.Scraper.Service.Contracts.Constants;
 using Rtl.TvMaze.Scraper.Service.Contracts.Settings;
+using Rtl.TvMaze.Validators;
 using Serilog;
 
 namespace Rtl.TvMaze.Api
@@ -149,6 +152,8 @@ namespace Rtl.TvMaze.Api
             #endregion
 
             services.ConfigureSwagger();
+
+            services.AddScoped<IValidator<ShowRequest>, ShowRequestValidator>();
         }
 
         static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()

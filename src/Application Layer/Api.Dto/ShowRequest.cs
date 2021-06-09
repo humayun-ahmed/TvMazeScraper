@@ -1,6 +1,6 @@
-﻿namespace Infrastructure.Repository.Contracts.Filter
+﻿namespace Rtl.TvMaze.Api.Dto
 {
-    public class FilterRequest
+    public class ShowRequest
     {
         public int PageNo { get; set; }
         public int PageSize { get; set; }

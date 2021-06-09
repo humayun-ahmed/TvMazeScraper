@@ -6,6 +6,6 @@ namespace Rtl.TvMaze.Scraper.Service.Contracts
 {
     public interface IShowQueryService
     {
-        Task<PagedResult<ShowDTO>> GetShows(FilterRequest filter);
+        Task<PagedResult<ShowDTO>> GetShows(ShowRequest show);
     }
 }

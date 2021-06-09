@@ -20,7 +20,7 @@ namespace Rtl.TvMaze.Scraper.Service
             m_readOnlyRepository = readOnlyRepository;
         }
 
-        public async Task<PagedResult<ShowDTO>> GetShows(FilterRequest filter)
+        public async Task<PagedResult<ShowDTO>> GetShows(ShowRequest filter)
         {
             var queryableResult = m_readOnlyRepository.GetItems<Show>().Include(i => i.Casts).GetPaged(filter.PageNo, filter.PageSize);
 

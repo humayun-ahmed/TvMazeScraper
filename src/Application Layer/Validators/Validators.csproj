@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Rtl.TvMaze.Validators</AssemblyName>
+    <RootNamespace>Rtl.TvMaze.Validators</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\StockExchange\src\StockExchange\Infrastructure\Validation\Contract\Validator.Contract.csproj" />
+    <ProjectReference Include="..\..\..\..\StockExchange\src\StockExchange\Infrastructure\Validation\Validator\Validator.csproj" />
+    <ProjectReference Include="..\Api.Dto\Api.Dto.csproj" />
+  </ItemGroup>
+
+</Project>

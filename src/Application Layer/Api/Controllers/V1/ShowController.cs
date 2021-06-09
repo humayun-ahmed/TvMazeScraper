@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Infrastructure.Repository.Contracts.Filter;
+using Infrastructure.Validator.Contract;
+using Rtl.TvMaze.Api.Dto;
 using Rtl.TvMaze.Scraper.Service.Contracts;
 
 namespace Rtl.TvMaze.Api.Controllers.V1
@@ -13,17 +10,29 @@ namespace Rtl.TvMaze.Api.Controllers.V1
     public class ShowController : ControllerBase
     {
         private readonly IShowQueryService m_showQueryService;
+        private readonly IValidator<ShowRequest> m_validator;
 
-        public ShowController(IShowQueryService showQueryService)
+        public ShowController(IShowQueryService showQueryService, IValidator<ShowRequest> validator)
         {
             m_showQueryService = showQueryService;
+            m_validator = validator;
         }
         [HttpGet]
         [Route(ApiRoutes.Shows)]
-        public async Task<IActionResult> Shows([FromQuery] FilterRequest filter)
+        public async Task<IActionResult> Shows([FromQuery] ShowRequest request)
         {
-            var result = await m_showQueryService.GetShows(filter);
-            return this.Ok(result);
+            var validationResult = m_validator.PerformValidation(request);
+
+            if (validationResult.IsValid)
+            {
+                var showRequest = new Scraper.Service.Contracts.DTO.ShowRequest { PageNo = request.PageNo, PageSize = request.PageSize };
+                var result = await m_showQueryService.GetShows(showRequest);
+                return this.Ok(result);
+            }
+            else
+            {
+                return BadRequest(validationResult.Errors);
+            }
         }
     }
 }
