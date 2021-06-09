@@ -17,8 +17,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\DataAccess\Repository.Contracts\Repository.Contracts.csproj" />
-    <ProjectReference Include="..\Scraper.Client.Contracts\Scraper.Service.Contracts.csproj" />
     <ProjectReference Include="..\Scraper.Repository\Scraper.Repository.csproj" />
+    <ProjectReference Include="..\Scraper.Service.Contracts\Scraper.Service.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

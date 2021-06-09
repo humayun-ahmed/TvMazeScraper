@@ -21,9 +21,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\StockExchange\src\StockExchange\Infrastructure\Validation\Contract\Validator.Contract.csproj" />
     <ProjectReference Include="..\..\..\..\StockExchange\src\StockExchange\Infrastructure\Validation\Validator\Validator.csproj" />
-    <ProjectReference Include="..\..\Domain Layer\Scraper.Client.Contracts\Scraper.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\Domain Layer\Scraper.Client\Scraper.Service.csproj" />
     <ProjectReference Include="..\..\Domain Layer\Scraper.Repository\Scraper.Repository.csproj" />
+    <ProjectReference Include="..\..\Domain Layer\Scraper.Service.Contracts\Scraper.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\Domain Layer\Scraper.Service\Scraper.Service.csproj" />
     <ProjectReference Include="..\..\Infrastructure\DataAccess\Repository.Contracts\Repository.Contracts.csproj" />
     <ProjectReference Include="..\..\Infrastructure\DataAccess\Repository\Repository.csproj" />
     <ProjectReference Include="..\Api.Dto\Api.Dto.csproj" />
