@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Infrastructure.Repository.Contracts</AssemblyName>
+    <RootNamespace>Infrastructure.Repository.Contracts</RootNamespace>
+  </PropertyGroup>
+
+</Project>
