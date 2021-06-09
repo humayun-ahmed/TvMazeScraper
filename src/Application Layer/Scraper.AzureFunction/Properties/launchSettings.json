@@ -1,0 +1,20 @@
+{
+  "profiles": {
+    "Rtl.TvMaze.Scraper.AzureFunction": {
+      "commandName": "Project",
+      "commandLineArgs": "host start --port 7074 --nodeDebugPort 5860",
+      "environmentVariables": {
+        "TimerTriggerExpression": "1 23 * * *"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "environmentVariables": {
+	      "TimerTriggerExpression": "1 23 * * *"
+      },
+      "httpPort": 30290,
+      "useSSL": false
+    }
+  }
+}

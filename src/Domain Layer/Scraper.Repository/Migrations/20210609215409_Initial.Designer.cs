@@ -10,7 +10,7 @@ using Rtl.TvMaze.Scraper.Repository;
 namespace Rtl.TvMaze.Scraper.Repository.Migrations
 {
     [DbContext(typeof(TvMazeContext))]
-    [Migration("20210609195035_Initial")]
+    [Migration("20210609215409_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

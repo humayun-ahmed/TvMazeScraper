@@ -102,66 +102,20 @@ namespace Rtl.TvMaze.Api
                 endpoints.MapHealthChecks("/health"); //Add a health endpoint to return the status of your application.
                 endpoints.MapControllers();
             });
-
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetRequiredService<BaseContext>();
-                context.Database.Migrate();
-                context.Database.EnsureCreated();
-            }
         }
 
         private void RegisterDependencies(IServiceCollection services)
         {
-            #region Settings
-            services.AddSingleton(Configuration.BindSettings<PaginationSettings>(nameof(PaginationSettings)));
-            services.AddSingleton(Configuration.BindSettings<ScraperSettings>(nameof(ScraperSettings)));
-            services.AddSingleton(Configuration.BindSettings<SchedulerSettings>(nameof(SchedulerSettings)));
-            #endregion
 
-            #region Http client
-            services.AddHttpClient<IScraperService, ScraperService>(HttpClientConstants.USER_AGENT_HEADER).AddPolicyHandler(GetRetryPolicy());// behind the scene, DefaultHttpClientFactory is used
-            #endregion
+            services.AddDependencies(Configuration);
 
-            #region DB
-            services.AddDbContext<TvMazeContext>(options => options.UseSqlServer(Configuration.GetConnectionString(nameof(TvMazeContext))));
-            #endregion
-
-            #region Services
-            services.AddScoped<IScraperService, ScraperService>();
-            services.AddScoped<IShowQueryService, ShowQueryService>();
-            #endregion
-
-            #region ServiceClients
-
-            #endregion
-
-            #region Repositories
-            services.AddScoped<BaseContext, TvMazeContext>();
-            services.AddScoped<IRepository, Repository>();
-            services.AddScoped<IReadOnlyRepository, Repository>();
-
-            #endregion
-
-            #region Hosted services
             services.AddHostedService<ScraperHostInstant>();
-            #endregion
 
-            #region Schedulers
             services.AddScheduler<ScraperHost>(c => c.Expression = Configuration.BindSettings<SchedulerSettings>(nameof(SchedulerSettings)).CronExpressionRecurrence);
-            #endregion
 
             services.ConfigureSwagger();
 
             services.AddScoped<IValidator<ShowRequest>, ShowRequestValidator>();
-        }
-
-        static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
-        {
-            return Policy
-                .Handle<HttpRequestException>()
-                .OrResult<HttpResponseMessage>(r => r.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
-                .WaitAndRetryAsync(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
         }
     }
 }

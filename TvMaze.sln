@@ -45,6 +45,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Test", "src\Application Layer\Validators.Test\Validators.Test.csproj", "{09272049-AA03-45F2-9F42-5BE0887ACB9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scraper.AzureFunction", "src\Application Layer\Scraper.AzureFunction\Scraper.AzureFunction.csproj", "{6BCC0227-ED3C-4556-B46A-12983F3AA3CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{09272049-AA03-45F2-9F42-5BE0887ACB9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09272049-AA03-45F2-9F42-5BE0887ACB9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09272049-AA03-45F2-9F42-5BE0887ACB9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BCC0227-ED3C-4556-B46A-12983F3AA3CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BCC0227-ED3C-4556-B46A-12983F3AA3CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BCC0227-ED3C-4556-B46A-12983F3AA3CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BCC0227-ED3C-4556-B46A-12983F3AA3CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,6 +140,7 @@ Global
 		{29BB0F1D-63A4-4697-8CD5-8D4196C7858B} = {DD79088D-4EA1-4EA9-9921-CEA7547DB2B5}
 		{0BDDE9C7-49AE-42ED-97E2-9B4E8D1C9B72} = {ACD3796D-531B-4EEC-B331-52BDDF305E9F}
 		{09272049-AA03-45F2-9F42-5BE0887ACB9B} = {0BDDE9C7-49AE-42ED-97E2-9B4E8D1C9B72}
+		{6BCC0227-ED3C-4556-B46A-12983F3AA3CA} = {ACD3796D-531B-4EEC-B331-52BDDF305E9F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65B3D57F-6587-4020-ADC6-D57D41494C41}

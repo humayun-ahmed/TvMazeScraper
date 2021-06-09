@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain Layer\Scraper.Client.Contracts\Scraper.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\Domain Layer\Scraper.Repository\Scraper.Repository.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Scheduler\Scheduler.csproj" />
   </ItemGroup>
 

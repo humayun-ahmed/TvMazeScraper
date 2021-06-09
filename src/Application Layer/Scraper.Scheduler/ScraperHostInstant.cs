@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Rtl.TvMaze.Scraper.Repository;
 using Rtl.TvMaze.Scraper.Service.Contracts;
 
 namespace Rtl.TvMaze.Scraper.Scheduler
@@ -17,12 +19,10 @@ namespace Rtl.TvMaze.Scraper.Scheduler
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            await DatabaseMigrate();
             await Scrape();
         }
 
-       
-
-        #region Seed
         private async Task Scrape()
         {
             using (var scope = _provider.CreateScope())
@@ -31,6 +31,13 @@ namespace Rtl.TvMaze.Scraper.Scheduler
                 await scraperServiceClient.ExecuteScraping();
             }
         }
-        #endregion
+
+        private async Task DatabaseMigrate()
+        {
+            using var scope = _provider.CreateScope();
+            using var _dbContext = scope.ServiceProvider.GetRequiredService<TvMazeContext>();
+            await _dbContext.Database.MigrateAsync();
+            await _dbContext.Database.EnsureCreatedAsync();
+        }
     }
 }
