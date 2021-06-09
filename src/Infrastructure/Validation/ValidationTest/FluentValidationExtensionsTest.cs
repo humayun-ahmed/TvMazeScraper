@@ -1,14 +1,11 @@
-﻿namespace Infrastructure.Validator.Test
+﻿using System.Collections.Generic;
+using FluentValidation.Results;
+using Infrastructure.Validator.Utility;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace Infrastructure.ValidationTest
 {
-	using System.Collections.Generic;
-
-	using FluentValidation.Results;
-
-	using Infrastructure.Validator.Utility;
-
-	using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-	[TestClass]
+    [TestClass]
     public class FluentValidationExtensionsTest
     {
         [TestMethod]

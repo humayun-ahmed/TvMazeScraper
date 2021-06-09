@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <AssemblyName>Infrastructure.ValidationTest</AssemblyName>
+
+    <RootNamespace>Infrastructure.ValidationTest</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.2.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.1.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\StockExchange\src\StockExchange\Infrastructure\Validation\Contract\Validator.Contract.csproj" />
+    <ProjectReference Include="..\..\..\..\..\StockExchange\src\StockExchange\Infrastructure\Validation\Validator\Validator.csproj" />
+  </ItemGroup>
+
+</Project>
