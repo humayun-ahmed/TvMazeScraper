@@ -1,4 +1,4 @@
-# TvMazeScraper API
+# TvMazeScraper & API
 
 ### Tools
 - Visual Studio 2019
