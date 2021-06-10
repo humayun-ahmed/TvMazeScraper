@@ -33,6 +33,7 @@ namespace Rtl.TvMaze.Scraper.Service
             #endregion
 
             #region Services
+            services.AddScoped<IScraperClient, ScraperClient>();
             services.AddScoped<IScraperService, ScraperService>();
             services.AddScoped<IShowQueryService, ShowQueryService>();
             #endregion
