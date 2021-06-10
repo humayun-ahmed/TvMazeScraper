@@ -11,10 +11,10 @@ namespace Rtl.TvMaze.Scraper.Scheduler
 {
     public class ScraperHostInstant : BackgroundService
     {
-        private readonly IServiceProvider _provider;
+        private readonly IServiceProvider m_provider;
         public ScraperHostInstant(IServiceProvider provider)
         {
-            _provider = provider;
+            m_provider = provider;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -25,7 +25,7 @@ namespace Rtl.TvMaze.Scraper.Scheduler
 
         private async Task Scrape()
         {
-            using (var scope = _provider.CreateScope())
+            using (var scope = m_provider.CreateScope())
             {
                 var scraperServiceClient = scope.ServiceProvider.GetRequiredService<IScraperService>();
                 await scraperServiceClient.ExecuteScraping();
@@ -34,10 +34,10 @@ namespace Rtl.TvMaze.Scraper.Scheduler
 
         private async Task DatabaseMigrate()
         {
-            using var scope = _provider.CreateScope();
-            using var _dbContext = scope.ServiceProvider.GetRequiredService<TvMazeContext>();
-            await _dbContext.Database.MigrateAsync();
-            await _dbContext.Database.EnsureCreatedAsync();
+            using var scope = m_provider.CreateScope();
+            using var dbContext = scope.ServiceProvider.GetRequiredService<TvMazeContext>();
+            await dbContext.Database.MigrateAsync();
+            await dbContext.Database.EnsureCreatedAsync();
         }
     }
 }

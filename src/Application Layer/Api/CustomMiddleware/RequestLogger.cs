@@ -9,16 +9,16 @@ namespace Rtl.TvMaze.Api.CustomMiddleware
 {
     public class RequestLogger
     {
-        private readonly RequestDelegate _next;
+        private readonly RequestDelegate m_next;
 
         public RequestLogger(RequestDelegate next)
         {
-            _next = next;
+            m_next = next;
         }
 
         public async Task Invoke(HttpContext httpContext, IServiceProvider serviceProvider)
         {
-            await _next(httpContext);
+            await m_next(httpContext);
 
             /*var repository = (IRepository)serviceProvider.GetService(typeof(IRepository));
 

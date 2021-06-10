@@ -11,21 +11,21 @@ namespace Rtl.TvMaze.Scraper.Scheduler
 {
     public class ScraperHost : SchedulerHostedService
     {
-        private readonly ILogger<ScraperHost> _logger;
-        private readonly IServiceProvider _provider;
+        private readonly ILogger<ScraperHost> m_logger;
+        private readonly IServiceProvider m_provider;
         public ScraperHost(IScheduleConfig<ScraperHost> config, ILogger<ScraperHost> logger,
             IServiceProvider provider)
             : base(config.Expression)
         {
-            _logger = logger;
-            _provider = provider;
+            m_logger = logger;
+            m_provider = provider;
         }
 
         public override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
             try
             {
-                using (var scope = _provider.CreateScope())
+                using (var scope = m_provider.CreateScope())
                 {
                     var scraperServiceClient = scope.ServiceProvider.GetRequiredService<IScraperService>();
                     await scraperServiceClient.ExecuteScraping();
@@ -33,7 +33,7 @@ namespace Rtl.TvMaze.Scraper.Scheduler
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                m_logger.LogCritical(ex.Message);
             }
         }
     }

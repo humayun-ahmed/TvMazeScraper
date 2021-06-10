@@ -5,7 +5,7 @@ namespace Rtl.TvMaze.Api.ApiTest.TestSupport
 {
 	public class ApiTestContext : IDisposable
 	{
-		private bool _disposedValue;
+		private bool m_disposedValue;
 
         public HttpClient Client { get;  }
 
@@ -19,7 +19,7 @@ namespace Rtl.TvMaze.Api.ApiTest.TestSupport
 
 		protected virtual void Dispose(bool disposing)
 		{
-			if (!_disposedValue)
+			if (!m_disposedValue)
 			{
 				if (disposing)
 				{
@@ -28,7 +28,7 @@ namespace Rtl.TvMaze.Api.ApiTest.TestSupport
 						TestServerBuilder.Dispose();
 					}
                 }
-                _disposedValue = true;
+                m_disposedValue = true;
 			}
 		}
 

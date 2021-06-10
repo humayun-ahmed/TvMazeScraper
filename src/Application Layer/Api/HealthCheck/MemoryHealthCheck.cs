@@ -15,11 +15,11 @@ namespace Rtl.TvMaze.Api.HealthCheck
     #region snippet1
     public class MemoryHealthCheck : IHealthCheck
     {
-        private readonly IOptionsMonitor<MemoryCheckOptions> _options;
+        private readonly IOptionsMonitor<MemoryCheckOptions> m_options;
 
         public MemoryHealthCheck(IOptionsMonitor<MemoryCheckOptions> options)
         {
-            _options = options;
+            m_options = options;
         }
 
         public string Name => "memory_check";
@@ -28,7 +28,7 @@ namespace Rtl.TvMaze.Api.HealthCheck
             HealthCheckContext context,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var options = _options.Get(context.Registration.Name);
+            var options = m_options.Get(context.Registration.Name);
 
             // Include GC information in the reported diagnostics.
             var allocated = GC.GetTotalMemory(forceFullCollection: false);
