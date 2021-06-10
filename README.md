@@ -2,8 +2,16 @@
 
 ### Tools
 - Visual Studio 2019
-- .Net 5
 - SQL Server
+
+### Technologies
+- .Net 5
+- Asp .Net Core 
+- MS Unit test
+- EntityFramework Core
+- FluentValidation
+- Polly
+
 
 #### Download the source code 
 https://github.com/humayun-ahmed/TvMazeScraper.git
