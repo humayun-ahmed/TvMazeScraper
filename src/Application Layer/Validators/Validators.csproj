@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\StockExchange\src\StockExchange\Infrastructure\Validation\Contract\Validator.Contract.csproj" />
-    <ProjectReference Include="..\..\..\..\StockExchange\src\StockExchange\Infrastructure\Validation\Validator\Validator.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Validation\Validator\Validator.csproj" />
     <ProjectReference Include="..\Api.Dto\Api.Dto.csproj" />
   </ItemGroup>
 
